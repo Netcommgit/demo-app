@@ -1,0 +1,15 @@
+.ribbon-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #055496;
+    height: 30px;
+    column-gap: 25px;
+}
+
+
+a{
+    color: white;
+   cursor: pointer;
+}

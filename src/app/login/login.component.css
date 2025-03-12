@@ -1,0 +1,81 @@
+
+.full-height {
+    height: 97vh;
+    display: flex;
+}
+
+
+.image-section {
+    flex: 75%;
+    background: url('https://rms.officenet.in/images/Banner/banneram.jpg') no-repeat center center/cover;
+}
+
+
+.login-section {
+    flex: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa; 
+}
+
+
+.login-box {
+    width: 80%;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.login-logo img {
+    width: 150px; 
+    margin-bottom: 15px;
+}
+
+
+.login-box input,
+.login-box button {
+    width: 100%;  
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+
+.login-box button {
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background: #0056b3;
+}
+
+.g-recaptcha {
+  margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .full-height {
+        flex-direction: column;
+    }
+
+    .image-section {
+        flex: 50%;
+        height: 50vh;
+    }
+
+    .login-section {
+        flex: 50%;
+        height: 50vh;
+        width: 100%;
+    }
+}

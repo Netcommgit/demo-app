@@ -1,0 +1,51 @@
+.captcha-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+  }
+  
+  input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #2bc1e7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #b3d4db;
+  }
+  input{
+  width: 100%;  
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.refresh-icon {
+  cursor: pointer;
+  font-size: 24px !important;
+  color: #333 !important;
+  transition: transform 0.3s ease;
+}
+
+.refresh-icon:hover {
+  transform: rotate(180deg);
+  color: #050505 !important;
+}

@@ -1,0 +1,32 @@
+.main-header-div{
+    justify-content: center;
+    align-items: center;
+}
+.div-dayoffbutton {
+    position: absolute;
+    top:1.5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Adjust button style */
+button {
+    background-color: red;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    width: 75px;
+    height: 40px; 
+    cursor: pointer;
+}
+
+.login-logo {
+    position: absolute;
+    left: 10%;
+    top: .5%;
+}
+
+.login-logo img{
+    height: 50px;
+    width: auto;
+}
