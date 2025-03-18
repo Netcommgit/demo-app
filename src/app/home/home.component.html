@@ -1,5 +1,59 @@
 <div class="main-class">
-   <app-header></app-header>
+    <app-header></app-header>
     <app-ribbon></app-ribbon>
+
+    <div class="slider-div">
+        <div class="slider-container">
+            <button class="prev" (click)="prevSlide()">&#10094;</button>
+
+            <div class="slider">
+                <img [src]="images[currentIndex]" alt="Slide">
+            </div>
+
+            <button class="next" (click)="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <div class="row banner-box">
+        <div class="heading-birthday">
+            <h5>
+                Today's Birthday
+            </h5>
+        </div>
+        <div class="header-wedding">
+            <h5>
+                Wedding Anniversary
+            </h5>
+
+        </div>
+        <div class="heading-adjusted">
+            <h5>
+                Adjusted Days
+            </h5>
+        </div>
+        <div class="heading-Regularization">
+            <h5>
+                Pending Att-Regularization
+            </h5>
+        </div>
+    </div>
+
+    <div class="banner-Note">
+        <div class="box-Birthday">
+            <p>No Birthday on today's.</p>
+        </div>
+        <div class="box-Wedding">
+            <p>No Anniversary on today</p>
+        </div>
+        <div class="box-adjusted">
+
+        </div>
+        <div class="box-Regularization">
+            <p>No Pending request for approval</p>
+        </div>
+    </div>
+
 </div>
+
+
+
 <app-footer></app-footer>

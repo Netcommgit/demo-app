@@ -13,3 +13,14 @@ a{
     color: white;
    cursor: pointer;
 }
+
+a {
+    text-decoration: none !important; /* Removes underline */
+  }
+  
+  .router-link-active {
+    text-decoration: none !important; 
+    border-bottom: none !important;    
+    outline: none !important;        
+  }
+  

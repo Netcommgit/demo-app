@@ -1,25 +1,22 @@
 /* Ensure html and body take the full height */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
 .main-class {
-    min-height: 91vh; /* Ensures it takes the full height */
+    min-height: 91vh;
     flex-direction: column;
     position: relative;
     width: 100%;
     display: flex;
 }
 
-
-
-
 app-ribbon {
-    position: absolute;
-    margin-top: 60px; 
-    width: 100%; 
+    position: relative;
+    width: 100%;
     text-align: center;
 }
 
@@ -28,6 +25,147 @@ app-footer {
     width: 100%;
     color: white;
     text-align: center;
-    
-    margin-top: auto; /* Push footer to the bottom */
+    margin-top: auto;
 }
+
+
+
+/* slider css start here  */
+
+.slider-container {
+    position: relative;
+    width: 1150px;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider img {
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    outline: none;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-div {
+    padding: 2%;
+}
+
+/* slider css end  here  */
+
+.header-wedding {
+    background-color: #70c063;
+}
+
+.banner-box {
+    display: flex;
+    column-gap: 4%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.banner-Note {
+    display: flex;
+    column-gap: 4%;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.heading-Regularization,
+.heading-adjusted,
+.heading-birthday {
+    background-color: #ff7e00;
+}
+
+.heading-Regularization,
+.heading-adjusted,
+.heading-birthday,
+.header-wedding {
+    width: 248px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px olid #ccc;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.box-Regularization,
+.box-adjusted,
+.box-Wedding,
+.box-Birthday {
+    width: 246.5px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 0px 0px 8px 8px ;
+    background-color: #FFE;
+}
+
+
+
+/* Ensure the banners align with the slider */
+.banner-box, .banner-Note {
+    width: 1150px;  /* Same as .slider-container */
+    max-width: 100%;
+    margin: auto;   /* Center align */
+    display: flex;
+    column-gap: 4%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Ensure uniform box sizing */
+.heading-Regularization,
+.heading-adjusted,
+.heading-birthday,
+.header-wedding,
+.box-Regularization,
+.box-adjusted,
+.box-Wedding,
+.box-Birthday {
+    flex: 1;  /* Make them flexible */
+    min-width: 220px; /* Prevent shrinking too much */
+    text-align: center;
+}
+
+/* Ensure responsiveness */
+/* @media (max-width: 1200px) {
+    .banner-box, .banner-Note {
+        width: 90%; 
+    }
+} */

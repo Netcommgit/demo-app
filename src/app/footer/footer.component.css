@@ -1,6 +1,19 @@
 .footer-div{
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: #055496;
+}
+
+.powered-div{
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.feedback-div{
+    position: absolute;
+    right: 10%;
+    display: flex;
+   float: left; 
 }

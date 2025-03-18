@@ -1,17 +1,23 @@
 .main-header-div{
-    justify-content: center;
     align-items: center;
-}
-.div-dayoffbutton {
-    position: absolute;
-    top:1.5%;
-    left: 50%;
-    transform: translateX(-50%);
+    justify-content: center;
+    position: relative;
+    display: flex;
 }
 
-/* Adjust button style */
-button {
-    background-color: red;
+.login-logo img{
+    height: 50px;
+    width: auto;
+}
+
+.login-logo{
+    position: relative;
+    right: 21.5%;
+}
+
+.btn-dayoff{
+    font-weight: bold;
+    background-color: rgb(231, 155, 155);
     color: white;
     border-radius: 7px;
     border: none;
@@ -19,14 +25,10 @@ button {
     height: 40px; 
     cursor: pointer;
 }
-
-.login-logo {
-    position: absolute;
-    left: 10%;
-    top: .5%;
+.btn-dayoff:hover{
+    background-color: red !important;
 }
 
-.login-logo img{
-    height: 50px;
-    width: auto;
-}
+
+
+
