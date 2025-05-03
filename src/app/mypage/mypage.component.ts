@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RibbonComponent } from '../ribbon/ribbon.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -12,4 +13,14 @@ import { CommonModule } from '@angular/common';
 })
 export class MypageComponent {
   isActive: boolean = true;
+  
+  constructor(private router:Router){}
+
+  navigateToUserReg(): void {
+    this.router.navigate(['/user-Reg']);
+  }
+
+  navigateToUserLisr(): void{
+    this.router.navigate(['/user-list'])
+  }
 }

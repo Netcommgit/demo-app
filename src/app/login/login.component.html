@@ -5,13 +5,13 @@
         <div class="login-logo">
           <img src="https://rms.officenet.in/images/Logo/cmpny_main_logo.png" alt="Company Logo">
         </div>
-        <input type="text" placeholder="Enter Username">
-        <input type="password" placeholder="Enter Password">
+        <input type="text" [(ngModel)]="user.email" placeholder="Enter Username">
+        <input type="password" [(ngModel)]="user.password"  placeholder="Enter Password">
   
         <app-captcha ></app-captcha>
   
         <!-- <button type="button" [disabled]="!captchaSuccess" (click)="login()">Login</button> -->
-        <button  routerLink="home1" routerLinkActive="router-link-active"  routerLinkActive="router-link-active"  type="button" >Login</button>
+        <button  (click)="login()" routerLink="" routerLinkActive="router-link-active"  routerLinkActive="router-link-active"  type="button" >Login</button>
   
       </div>
     </div>

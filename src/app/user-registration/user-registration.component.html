@@ -1,0 +1,165 @@
+<div [ngClass]="'header-div'">
+    <app-header></app-header>
+    <app-ribbon></app-ribbon>
+</div>
+
+
+
+
+
+
+
+<div class="registration-container mat-elevation-z3">
+  <h2>User Registration</h2>
+
+  <form  [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <!-- First Row -->
+    <div class="form-row">
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+          <input matInput id="firstName" formControlName="firstName" required />
+          <mat-error *ngIf="registrationForm.get('firstName')?.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput id="lastName" formControlName="lastName" required />
+          <mat-error *ngIf="registrationForm.get('lastName')?.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput  id="email" formControlName="email" required />
+          <mat-error *ngIf="registrationForm.get('email')?.invalid">Valid email required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label for="gender">Gender</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-select id="gender" formControlName="gender" required>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('gender')?.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="form-row">
+
+      <!-- <div class="form-field">
+        <label for="dateOfBirth">Date of Birth</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="date" id="dateOfBirthId" formControlName="DOB"/>
+        </mat-form-field>
+      </div> -->
+      <div class="form-field">
+        <label for="dobPicker">Date of Birth</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput [matDatepicker]="picker" id="dobPicker" formControlName="DOB" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label>Mobile Number</label>
+        <mat-form-field appearance="outline" class="full-width">
+      
+          <input matInput type="text" formControlName="mobileNum" />
+          <mat-error *ngIf="registrationForm.get('mobileNum')?.hasError('pattern')">
+            Mobile number must be 10 digits.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label for="password">Password</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input autocomplete="new-password" matInput type="password" id="password" formControlName="password" required />
+          <mat-error *ngIf="registrationForm.get('password')?.invalid">Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label for="confirmPassword">Confirm Password</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="password" id="confirmPassword" formControlName="confirmPassword" required />
+        </mat-form-field>
+      </div>
+
+
+
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">
+      Register
+    </button>
+  </form>
+</div>
+
+
+
+
+<!-- <div class="registration-container mat-elevation-z3">
+  <h2>User Registration</h2>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error *ngIf="registrationForm.get('firstName')?.invalid">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error *ngIf="registrationForm.get('lastName')?.invalid">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registrationForm.get('gender')?.invalid">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="registrationForm.get('email')?.invalid">Valid email required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" required />
+      <mat-error *ngIf="registrationForm.get('password')?.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" required />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">
+      Register
+    </button>
+  </form>
+</div> -->
+
+
+
+<app-footer></app-footer>
