@@ -9,13 +9,17 @@
         <thead>
             <tr>
                 <td>Employee Name</td>
+                <td>Employee ID</td>
+
             </tr>
         </thead>
 
 
         <tbody>
             <tr *ngFor="let user of users">
-                <td>{{user.firstName}}</td>
+                <td>{{user.firstName}}  {{user.lastName}}</td>
+                <td>{{user.empCode}}</td>
+
             </tr>
         </tbody>
 

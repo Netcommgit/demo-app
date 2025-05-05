@@ -35,7 +35,6 @@ export class LoginComponent {
 
     this.loginService.login(this.user).subscribe({
       next: (response) => {
-        debugger;
         if (response.id !== null && response.id !== undefined && response.id !== '') {
           const token =  response.access_token;
           this.authService.saveToken(token);
