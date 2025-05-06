@@ -19,7 +19,6 @@ export class CaptchaComponent implements AfterViewInit {
   }
 
   generateCaptcha() {
-    debugger;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#!&^*$%';
     this.captchaText = Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
     

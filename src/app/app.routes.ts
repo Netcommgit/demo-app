@@ -5,27 +5,43 @@ import { LoginComponent } from './login/login.component';
 import { MypageComponent } from './mypage/mypage.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { SurveyComponent } from './survey/survey.component';
 //import { authGuard } from './shared/auth.guard';
 export const routes: Routes = [
 
     {
         path:'',
-        component:LoginComponent
+        component:LoginComponent,
+        title:'Login'
+    },
+    {
+        path:'user-login',
+        component:LoginComponent,
+        title:'Login'
     },
     {
         path:'home1',
-        component:HomeComponent
+        component:HomeComponent,
+        title:'Home'
     },
     {
         path:'mypage',
-        component:MypageComponent
+        component:MypageComponent,
+        title:'My Page'
     },
     {
         path:'user-Reg',
-        component:UserRegistrationComponent
+        component:UserRegistrationComponent,
+        title:'User Registation'
     },
     {
         path:'user-list',
-        component:UserListComponent
+        component:UserListComponent,
+        title:'User List'
+    },
+    {
+        path:'user-survey',
+        component:SurveyComponent,
+        title:'User Survey'
     }
 ];

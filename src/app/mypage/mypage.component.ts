@@ -20,7 +20,10 @@ export class MypageComponent {
     this.router.navigate(['/user-Reg']);
   }
 
-  navigateToUserLisr(): void{
+  navigateToUserList(): void{
     this.router.navigate(['/user-list'])
+  }
+  naigateToSurvey():void{
+    this.router.navigate(['user-survey'])
   }
 }
