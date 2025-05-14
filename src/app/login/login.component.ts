@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CaptchaComponent } from "../captcha/captcha.component";
 import { RouterModule,RouterLinkActive,Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../loginservice/login.service';
+import { LoginService } from '../services/login.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 // import { BrowserModule } from '@angular/platform-browser';
