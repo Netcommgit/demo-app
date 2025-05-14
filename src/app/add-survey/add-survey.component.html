@@ -1,0 +1,140 @@
+<div [ngClass]="'header-div'">
+  <app-header></app-header>
+  <app-ribbon></app-ribbon>
+</div>
+
+<div class="page-wrapper">
+  <div class="container-class">
+    <div class="div-container">
+      <h4 class="text-white m-0">Create Survey</h4>
+    </div>
+
+    <div class="div-header">
+      <h4 class="m-0">Survey Details</h4>
+    </div>
+  </div>
+
+  <div class="div-formgroup">
+    <div class="survey-container" [formGroup]="surveyForm">
+      <h2>Survey Details</h2>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="surveyName">Survey Name</label>
+          <input formControlName="surveyName" id="surveyName" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input formControlName="startDate" id="startDate" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input formControlName="endDate" id="endDate" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="userInstructions">User Instructions</label>
+          <input formControlName="userInstructions" id="userInstructions" type="text" />
+        </div>
+        <div class="form-group full-width">
+          <label for="confirmationMessage">Confirmation Message</label>
+          <input formControlName="confirmationMessage" id="confirmationMessage" type="text" />
+        </div>
+        <div class="form-group">
+          <label>Display Questions</label>
+          <div class="radio-group">
+            <label><input formControlName="displayType" type="radio" name="display"  value="1" checked /> Single Page</label>
+            <label><input formControlName="displayType" type="radio" name="display" value="2" /> Different Page</label>
+          </div>
+        </div>
+      </div>
+
+      <h3>Authenticate Users for Survey</h3>
+      <div class="auth-options">
+        <label><input formControlName="authType" type="radio" name="auth" value="1" checked /> For All Employee</label>
+        <label><input formControlName="authType" type="radio" name="auth" value="2" /> For Custom Group</label>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Select Location:</label>
+        <select formControlName="location" id="location">
+          <option>Select an Option</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <select formControlName="department" id="department">
+          <option>Select an Option</option>
+        </select>
+      </div>
+
+      <div class="select-box-container">
+        <div class="select-box">
+          <select id="ddlAllUser" size="5" #allUserSelect>
+             <option>....</option>
+            <option value="1">Item 1</option>
+            <option value="2">Item 2</option>
+            <option value="3">Item 3</option>
+          </select>
+        </div>
+
+        <div class="move-buttons">
+          <button class="circle-btn" (click)="moveSelectedItem(allUserSelect, selectedUserSelect)">&#10148;</button>
+          <button class="circle-btn rotated" (click)="moveSelectedItem(selectedUserSelect, allUserSelect)">&#10148;</button>
+        </div>
+
+        <div class="select-box">
+          <select formControlName="selectedUsers" id="ddlSelectedUser" size="5" #selectedUserSelect>
+            <option *ngFor="let user of selectedUserList">{{ user }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-option-wrapper">
+        <div class="question-option-header">
+          <div class="header-section">Question Details</div>
+          <div class="header-section">Option Details</div>
+        </div>
+
+        <div class="question-option-body">
+          <div class="question-section">
+            <label for="questionText">Question Text</label>
+            <textarea formControlName="questionText" id="questionText"></textarea>
+          </div>
+          <div class="option-section">
+            <label for="optionType">Option Type</label>
+            <div class="option-types">
+              <label><input formControlName="optionType" type="radio" name="optType" value="1" checked /> Radio Button</label>
+              <label><input formControlName="optionType" type="radio" name="optType" value="2" /> Multiple Text Box</label>
+              <label><input formControlName="optionType" type="radio" name="optType" value="3" /> Check Box</label>
+              <label><input formControlName="optionType" type="radio" name="optType" value="4" /> Single Text Box</label>
+            </div>
+          </div>
+
+          <div class="option-list-section">
+            <label>Option List</label>
+            <div class="option-row">
+              <input formControlName="newOption" type="text" placeholder="Enter Option" class="option-input" />
+              <button class="btn add-btn" (click)="addOption()">Add Option</button>
+
+              <select id="ddlOptionName" size="5" class="option-select" [(ngModel)]="selectedOption">
+                <option *ngFor="let option of boxTypeOptions" [value]="option">{{ option }}</option>
+              </select>
+
+              <button (click)="moveOptionUp()" class="arrow-btn">⬆</button>
+              <button (click)="moveOptionDown()" class="arrow-btn">⬇</button>
+              <button class="btn delete-btn" (click)="deleteOptions()">✖</button>
+            </div>
+          </div>
+
+          <div class="save-button">
+            <button class="btn save-btn" (click)="submitSurvey()">Save Survey Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

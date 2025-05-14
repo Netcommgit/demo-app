@@ -6,6 +6,8 @@ import { MypageComponent } from './mypage/mypage.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SurveyComponent } from './survey/survey.component';
+import { AddSurveyComponent } from './add-survey/add-survey.component';
+import { PlantMasterComponent } from './plant-master/plant-master.component';
 //import { authGuard } from './shared/auth.guard';
 export const routes: Routes = [
 
@@ -43,5 +45,16 @@ export const routes: Routes = [
         path:'user-survey',
         component:SurveyComponent,
         title:'User Survey'
+    },
+    {
+        path:'add-Survey',
+        component:AddSurveyComponent,
+        title:'Add Survey'
+    },
+    {
+        path:'add-plant',
+        component:PlantMasterComponent,
+        title:'Add Plant'
     }
+
 ];

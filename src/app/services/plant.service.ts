@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { Plant } from '../models/plant';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ConfigService } from './config.service';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PlantService {
+
+  private apiUrl :string;
+
+  constructor(private http:HttpClient, private configService:ConfigService){
+    this.apiUrl =  this.configService.getApiUrl();
+  }
+  
+
+  savePlant(plant: Plant): Observable<any> {
+  return this.http.post(this.apiUrl+'PlantMaster/Save', plant);
+}
+}

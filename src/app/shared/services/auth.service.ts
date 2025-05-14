@@ -46,7 +46,7 @@ export class AuthService {
                 text: 'This is expired Token',
                 icon: 'error',
                 showConfirmButton: false,
-                timer: 2000, 
+                timer: 2000,
                 timerProgressBar: true
             });
         }
@@ -54,12 +54,11 @@ export class AuthService {
     }
 
     isExpiredToken(): boolean {
-        debugger;
-        const expiry =  this.getTokenExpiry();
-        if(!expiry)
-        return true;
-        
-        const now = Math.floor(Date.now()/1000);
-        return expiry <now;
+        const expiry = this.getTokenExpiry();
+        if (!expiry)
+            return true;
+
+        const now = Math.floor(Date.now() / 1000);
+        return expiry < now;
     }
 }

@@ -1,0 +1,51 @@
+<div [ngClass]="'header-div'">
+    <app-header></app-header>
+    <app-ribbon></app-ribbon>
+</div>
+
+<div [ngClass]="'plant-form-container'">
+
+    <div class="loading-spinner" *ngIf="isSubmitting"></div>
+
+    <div *ngIf="showToast" class="toast-box">
+        {{ toastMessage }}
+    </div>
+
+    <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+        <div [ngClass]="'form-row'">
+            <label for="plantName">Plant Name *</label>
+            <input id="plantName" formControlName="plantName" type="text" />
+            <div class="error" *ngIf="plantForm.get('plantName')?.touched && plantForm.get('plantName')?.invalid">
+                Plant Name is required.
+            </div>
+        </div>
+
+        <div [ngClass]="'form-row'">
+            <label for="sapCode">SAP Code</label>
+            <input id="sapCode" formControlName="sapCode" type="text" />
+        </div>
+
+        <div [ngClass]="'form-row checkbox-row'">
+            <label for="status">Status *</label>
+            <input id="status" type="checkbox" formControlName="status" />
+            <div class="error" *ngIf="plantForm.get('status')?.touched && plantForm.get('status')?.invalid">
+                Status is required.
+            </div>
+        </div>
+
+        <div [ngClass]="'form-row full-width'">
+            <label for="plantDescription">Plant Description</label>
+            <textarea id="plantDescription" formControlName="plantDescription" rows="3"></textarea>
+        </div>
+
+        <div [ngClass]="'form-actions'">
+            <button type="submit" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Saving...' : 'Save' }}
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+<app-footer></app-footer>

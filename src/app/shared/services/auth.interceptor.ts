@@ -1,4 +1,4 @@
-import { Injectable,inject } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { AuthService } from "./auth.service";
 import { Router } from "@angular/router";
@@ -8,7 +8,7 @@ import { error } from "console";
 
 export const authInterceptorFn: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  const router =  inject(Router);
+  const router = inject(Router);
   const token = authService.getToken();
 
   // Skip token for login or register requests
@@ -18,7 +18,7 @@ export const authInterceptorFn: HttpInterceptorFn = (req, next) => {
   if (isExcluded) {
     return next(req);
   }
-  debugger;
+
   if (token && authService.isExpiredToken()) {
     authService.logOut();
     router.navigate(['/user-login']);
@@ -30,9 +30,8 @@ export const authInterceptorFn: HttpInterceptorFn = (req, next) => {
     : req;
 
   return next(authReq).pipe(
-    catchError((error: HttpErrorResponse) =>{
-      debugger;
-      if(error.status === 401){
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
         authService.logOut();
         router.navigate(['/user-login'])
       }

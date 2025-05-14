@@ -2,3 +2,39 @@ app-footer{
     color: white;
 }
 
+
+.header-container {
+    background-color: black;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px; /* Optional, adjusts space between the buttons */
+  }
+
+  .text-white {
+    color:  white;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
+    height: 30px; 
+    padding: 10px; 
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  h3 {
+    padding: 0;
+    margin: 0;
+    height: 100%; 
+    /* line-height: 50px;  */
+  }
+  
+ 

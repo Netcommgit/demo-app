@@ -1,7 +1,15 @@
 <div [ngClass]="'header-div'">
-    <app-header></app-header>
-    <app-ribbon></app-ribbon>
+  <app-header></app-header>
+  <app-ribbon></app-ribbon>
 </div>
 
+<div [ngClass]="'container-class'">
+  <div [ngClass]="'header-container'">
+    <h3 class="text-white m-0">Survey Details</h3>
+    <div class="button-group">
+      <button (click)="addSurveyPage()" class="btn btn-primary me-2">Add Survey</button>
+      <button class="btn btn-secondary">Manage Survey</button>
+    </div>
+  </div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>

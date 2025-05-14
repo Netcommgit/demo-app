@@ -26,4 +26,7 @@ export class MypageComponent {
   naigateToSurvey():void{
     this.router.navigate(['user-survey'])
   }
+  naigateToPlant():void{
+    this.router.navigate(['add-plant'])
+  }
 }

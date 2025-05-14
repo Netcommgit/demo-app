@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RibbonComponent } from '../ribbon/ribbon.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-
+import { Router } from '@angular/router';
+// import {AddSurveyComponent}  from '../add-survey/add-survey.component'
 
 @Component({
   selector: 'app-survey',
@@ -12,5 +13,10 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './survey.component.css'
 })
 export class SurveyComponent {
-  
+   
+    constructor(private router:Router){}
+    
+    addSurveyPage():void{
+      this.router.navigate(['/add-Survey']);
+    }
 }

@@ -18,7 +18,6 @@ export class UserListComponent {
 
 
   ngOnInit(): void {
-    debugger
     this.userList.getUserList().subscribe({
       next: (data) => {
         this.users = data;
