@@ -3,7 +3,16 @@
     <app-ribbon></app-ribbon>
 </div>
 
+
+
+
 <div [ngClass]="'plant-form-container'">
+
+     <div class="back-button-container">
+        <button type="button" (click)="goToPlantList()">
+            Back to List
+        </button>
+    </div>
 
     <div class="loading-spinner" *ngIf="isSubmitting"></div>
 
@@ -12,6 +21,9 @@
     </div>
 
     <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+
+           <input type="hidden" formControlName="plantId" />
+
         <div [ngClass]="'form-row'">
             <label for="plantName">Plant Name *</label>
             <input id="plantName" formControlName="plantName" type="text" />

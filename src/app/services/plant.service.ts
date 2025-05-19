@@ -10,14 +10,18 @@ import { ConfigService } from './config.service';
 })
 export class PlantService {
 
-  private apiUrl :string;
+  private apiUrl: string;
 
-  constructor(private http:HttpClient, private configService:ConfigService){
-    this.apiUrl =  this.configService.getApiUrl();
+  constructor(private http: HttpClient, private configService: ConfigService) {
+    this.apiUrl = this.configService.getApiUrl();
   }
-  
+
 
   savePlant(plant: Plant): Observable<any> {
-  return this.http.post(this.apiUrl+'PlantMaster/Save', plant);
-}
+    return this.http.post(this.apiUrl + 'PlantMaster/Save', plant);
+  }
+
+  getPlantList():Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl+'PlantMaster/GetPlantList')
+  }
 }

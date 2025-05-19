@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlantService } from '../services/plant.service';
 import { Plant } from '../models/plant';
-
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-plant-master',
   imports: [HeaderComponent, RibbonComponent, FooterComponent, CommonModule
@@ -20,56 +20,108 @@ export class PlantMasterComponent implements OnInit {
   plantForm!: FormGroup;
   isSubmitting: boolean = false;
   toastMessage: string = '';
+  toastType: 'success' | 'error' = 'success';
   showToast: boolean = false;
+  plant: any;
 
 
-  constructor(private fb: FormBuilder, private plantService: PlantService) { }
+  constructor(private fb: FormBuilder, private plantService: PlantService, private router: Router) { }
 
   ngOnInit(): void {
+
+
+    this.plant = history.state.plant;
+    debugger
+    if (!this.plant) {
+      this.goToPlantList();
+      return;
+    }
+
+    this.initializeForm();
+
+    //This code will work on both for validation and databinding start here 
+    // this.plantForm = this.fb.group({
+    //   plantId: [this.plant?.plantId || 0, [Validators.required]],
+    //   plantName: [this.plant?.plantName || '', [Validators.required]],
+    //   sapCode: [this.plant?.sapCode || ''],
+    //   status: [this.plant?.status ?? true, [Validators.requiredTrue]],
+    //   plantDescription: [this.plant?.plantDescription || '']
+    // });
+    //This code will work on both for validation and databinding end here 
+
+    //binding value for editing start here 
+    // this.plantForm = this.fb.group({
+
+    //   plantId: [this.plant.plantId || 0, [Validators.required]],
+    //   plantName: [this.plant.plantName || '', [Validators.required]],
+    //   sapCode: [this.plant.sapCode || ''],
+    //   status: [this.plant.status ?? true, [Validators.requiredTrue]],
+    //   plantDescription: [this.plant.plantDescription || '']
+    // });
+
+    //binding value for editing start here 
+
+
+    //this is for validation satrt here 
+    // this.plantForm = this.fb.group({
+    //   plantId: [0, [Validators.required]],
+    //   plantName: ['', [Validators.required]],
+    //   sapCode: [''],
+    //   status: [true, [Validators.requiredTrue]],
+    //   plantDescription: ['']
+    // });
+    //this is for validation end here 
+  }
+  initializeForm(): void {
     this.plantForm = this.fb.group({
-      plantId: [0, [Validators.required]],
-      plantName: ['', [Validators.required]],
-      sapCode: [''],
-      status: [true, [Validators.requiredTrue]],
-      plantDescription: ['']
+      plantId: [this.plant?.plantId || 0, [Validators.required]],
+      plantName: [this.plant?.plantName || '', [Validators.required]],
+      sapCode: [this.plant?.sapCode || ''],
+      status: [this.plant?.status ?? true, [Validators.requiredTrue]],
+      plantDescription: [this.plant?.plantDescription || '']
     });
   }
 
-
   onSubmit() {
-  if (this.plantForm.invalid) {
-    this.plantForm.markAllAsTouched(); 
+    if (this.plantForm.invalid) {
+      this.plantForm.markAllAsTouched();
 
-    const firstInvalid = document.querySelector('.ng-invalid');
-    if (firstInvalid) {
-      (firstInvalid as HTMLElement).focus();
+      const firstInvalid = document.querySelector('.ng-invalid');
+      if (firstInvalid) {
+        (firstInvalid as HTMLElement).focus();
+      }
+      return;
     }
-    return;
+
+    this.isSubmitting = true;
+    const plantData = this.plantForm.value;
+
+    this.plantService.savePlant(plantData).subscribe({
+      next: () => {
+
+        this.isSubmitting = false;
+        this.toastType = 'success';
+        this.toastMessage = 'Plant saved successfully!';
+        this.showToast = true;
+        this.plantForm.reset({
+          plantId: 0,
+          status: true,
+        });
+
+        setTimeout(() => (this.showToast = false), 3000);
+      },
+      error: () => {
+        this.isSubmitting = false;
+        this.toastType = 'error';
+        this.toastMessage = 'Failed to save plant.';
+        this.showToast = true;
+        setTimeout(() => (this.showToast = false), 3000);
+      }
+    });
   }
 
-  this.isSubmitting = true;
-  const plantData = this.plantForm.value;
-
-  this.plantService.savePlant(plantData).subscribe({
-    next: () => {
-      this.isSubmitting = false;
-      this.toastMessage = 'Plant saved successfully!';
-      this.showToast = true;
-      this.plantForm.reset({
-        plantId: 0,
-        status: true,
-      });
-
-      setTimeout(() => (this.showToast = false), 3000);
-    },
-    error: () => {
-      this.isSubmitting = false;
-      this.toastMessage = 'Failed to save plant.';
-      this.showToast = true;
-      setTimeout(() => (this.showToast = false), 3000);
-    }
-  });
-}
-
+  goToPlantList(): void {
+    this.router.navigate(['/plant-list'])
+  }
 
 }

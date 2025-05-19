@@ -112,6 +112,14 @@ button[disabled] {
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.toast-box.success {
+  background-color: #4caf50;
+}
+
+.toast-box.error {
+  background-color: #f44336;
+}
+
 @keyframes fadein {
   from { opacity: 0; top: 10px; }
   to { opacity: 1; top: 0; }
@@ -127,4 +135,40 @@ button[disabled] {
   color: red;
   font-size: 13px;
   margin-top: 5px;
+}
+
+
+.back-button-container button:hover {
+  background-color: #0059b3;
+}
+
+
+
+
+
+.plant-form-container {
+  position: relative;
+  padding: 20px;
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  padding-right: 10px; /* Align with form-actions if it has padding */
+}
+
+.back-button-container button {
+  padding: 6px 16px;
+  font-size: 14px;
+  background-color:  #004080;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px; /* match this with back-button-container */
 }

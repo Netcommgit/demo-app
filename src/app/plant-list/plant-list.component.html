@@ -1,4 +1,35 @@
 <app-header></app-header>
 <app-ribbon></app-ribbon>
 
+<button [ngClass]="'add-button-Container'" type="button" (click)="addNewPlant()">
+    Add New Plant
+</button>
+
+
+<div class="table-container">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Plant Name</th>
+        <th>Plant SAP Code</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plant of plants">
+        <td>{{ plant.plantName }}</td>
+        <td>{{ plant.sapCode }}</td>
+       <td>{{ plant.status ? 'Active' : 'Inactive' }}</td>
+        <td>
+          <button class="edit-btn" (click)="editPlant(plant)">Edit</button>
+          <button class="delete-btn" (click)="deletePlant(plant)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
 <app-footer></app-footer>
