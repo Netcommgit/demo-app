@@ -23,16 +23,18 @@ export class PlantMasterComponent implements OnInit {
   toastType: 'success' | 'error' = 'success';
   showToast: boolean = false;
   plant: any;
+  isEditMode:boolean = false;
 
 
   constructor(private fb: FormBuilder, private plantService: PlantService, private router: Router) { }
 
   ngOnInit(): void {
-
+    debugger
 
     this.plant = history.state.plant;
-    debugger
-    if (!this.plant) {
+    this.isEditMode =  history.state.isEditMode;
+
+    if (!this.plant && this.isEditMode) {
       this.goToPlantList();
       return;
     }

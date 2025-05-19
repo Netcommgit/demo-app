@@ -38,7 +38,9 @@ export class PlantListComponent {
 
   editPlant(plant: any) {
     this.router.navigate(['/add-plant'], {
-      state: { plant: plant }
+      state: { plant: plant, 
+         isEditMode: true
+      }
     });
   }
 
