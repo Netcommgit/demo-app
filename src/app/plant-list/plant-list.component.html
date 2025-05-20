@@ -23,7 +23,7 @@
        <td>{{ plant.status ? 'Active' : 'Inactive' }}</td>
         <td>
           <button class="edit-btn" (click)="editPlant(plant)">Edit</button>
-          <button class="delete-btn" (click)="deletePlant(plant)">Delete</button>
+          <button class="delete-btn" (click)="deletePlant(plant.plantId)">Delete</button>
         </td>
       </tr>
     </tbody>

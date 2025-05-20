@@ -5,6 +5,7 @@ import { RibbonComponent } from '../ribbon/ribbon.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PlantService } from '../services/plant.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plant-list',
@@ -16,12 +17,16 @@ export class PlantListComponent {
   plants: any[] = [];
 
 
-  constructor(private router: Router, private plantService: PlantService) { }
+  constructor(private router: Router, private plantService: PlantService, private toastr: ToastrService) { }
 
 
 
 
   ngOnInit(): void {
+    this.getPlandData();
+  }
+
+  getPlandData(): void {
     this.plantService.getPlantList().subscribe({
       next: data => {
         this.plants = data
@@ -38,14 +43,27 @@ export class PlantListComponent {
 
   editPlant(plant: any) {
     this.router.navigate(['/add-plant'], {
-      state: { plant: plant, 
-         isEditMode: true
+      state: {
+        plant: plant,
+        isEditMode: true
       }
     });
   }
 
-  deletePlant(plant: any): void {
-    console.log(plant);
+  deletePlant(plantId: number): void {
+    this.plantService.deletePlantData(plantId).subscribe({
+      next: () => {
+        this.toastr.success('Deleted successfully!', 'Success',{
+          timeOut:1000
+        });
+        this.getPlandData();
+      },
+      error: (error) => {
+        this.toastr.error('Failed to delete plant. Please try again later.', 'Error',{
+          timeOut:1000
+        });
+      }
+    });
   }
 
 }

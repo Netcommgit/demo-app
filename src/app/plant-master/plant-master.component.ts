@@ -41,38 +41,6 @@ export class PlantMasterComponent implements OnInit {
 
     this.initializeForm();
 
-    //This code will work on both for validation and databinding start here 
-    // this.plantForm = this.fb.group({
-    //   plantId: [this.plant?.plantId || 0, [Validators.required]],
-    //   plantName: [this.plant?.plantName || '', [Validators.required]],
-    //   sapCode: [this.plant?.sapCode || ''],
-    //   status: [this.plant?.status ?? true, [Validators.requiredTrue]],
-    //   plantDescription: [this.plant?.plantDescription || '']
-    // });
-    //This code will work on both for validation and databinding end here 
-
-    //binding value for editing start here 
-    // this.plantForm = this.fb.group({
-
-    //   plantId: [this.plant.plantId || 0, [Validators.required]],
-    //   plantName: [this.plant.plantName || '', [Validators.required]],
-    //   sapCode: [this.plant.sapCode || ''],
-    //   status: [this.plant.status ?? true, [Validators.requiredTrue]],
-    //   plantDescription: [this.plant.plantDescription || '']
-    // });
-
-    //binding value for editing start here 
-
-
-    //this is for validation satrt here 
-    // this.plantForm = this.fb.group({
-    //   plantId: [0, [Validators.required]],
-    //   plantName: ['', [Validators.required]],
-    //   sapCode: [''],
-    //   status: [true, [Validators.requiredTrue]],
-    //   plantDescription: ['']
-    // });
-    //this is for validation end here 
   }
   initializeForm(): void {
     this.plantForm = this.fb.group({
