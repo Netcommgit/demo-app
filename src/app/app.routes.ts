@@ -9,6 +9,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { AddSurveyComponent } from './add-survey/add-survey.component';
 import { PlantMasterComponent } from './plant-master/plant-master.component';
 import { PlantListComponent } from './plant-list/plant-list.component';
+import { DepartmentComponent } from './department/department.component';
 //import { authGuard } from './shared/auth.guard';
 export const routes: Routes = [
 
@@ -61,6 +62,11 @@ export const routes: Routes = [
         path:'plant-list',
         component:PlantListComponent,
         title:'Plant List'
+    },
+    {
+        path:'department',
+        component:DepartmentComponent,
+        title:'Department'
     }
 
 ];

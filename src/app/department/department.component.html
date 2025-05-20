@@ -1,0 +1,64 @@
+<app-header></app-header>
+<app-ribbon></app-ribbon>
+
+<div [ngClass]="'plant-form-container'">
+
+  <div class="back-button-container">
+    <button type="button" (click)="goBack()">
+      Back to List
+    </button>
+  </div>
+
+  <div class="loading-spinner" *ngIf="isSubmitting"></div>
+
+  <div *ngIf="showToast" class="toast-box success">
+    {{ toastMessage }}
+  </div>
+
+  <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="deptID" />
+
+    <div class="form-row">
+      <label for="deptName">Department Name *</label>
+      <input id="deptName" formControlName="deptName" type="text" />
+      <div class="error" *ngIf="departmentForm.get('deptName')?.touched && departmentForm.get('deptName')?.invalid">
+        Department Name is required.
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="sapCode">SAP Code</label>
+      <input id="sapCode" formControlName="sapCode" type="text" />
+    </div>
+
+    <div class="form-row">
+      <label for="groupID">Group ID</label>
+      <input id="groupID" formControlName="groupID" type="number" />
+    </div>
+
+    <div class="form-row">
+      <label for="modifyDate">Modify Date</label>
+      <input id="modifyDate" type="datetime-local" formControlName="modifyDate" />
+    </div>
+
+    <div class="form-row checkbox-row">
+      <label for="status">Status</label>
+      <input id="status" type="checkbox" formControlName="status" />
+    </div>
+
+    <div class="form-row checkbox-row">
+      <label for="archive">Archive</label>
+      <input id="archive" type="checkbox" formControlName="archive" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Saving...' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+<app-footer></app-footer>

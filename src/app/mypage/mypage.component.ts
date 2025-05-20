@@ -21,12 +21,15 @@ export class MypageComponent {
   }
 
   navigateToUserList(): void{
-    this.router.navigate(['/user-list'])
+    this.router.navigate(['/user-list']);
   }
   naigateToSurvey():void{
-    this.router.navigate(['user-survey'])
+    this.router.navigate(['user-survey']);
   }
   naigateToPlant():void{
-    this.router.navigate(['add-plant'])
+    this.router.navigate(['add-plant']);
+  }
+  naigateToDepartment():void{
+    this.router.navigate(['department']);
   }
 }
