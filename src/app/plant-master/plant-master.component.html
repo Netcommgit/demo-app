@@ -52,7 +52,8 @@
 
         <div [ngClass]="'form-actions'">
             <button type="submit" [disabled]="isSubmitting">
-                {{ isSubmitting ? 'Saving...' : 'Save' }}
+                <!-- {{ isSubmitting ? 'Saving...' : 'Save' }} -->
+                  {{ isSubmitting ? (isEditMode ? 'Updating...' : 'Saving...') : (isEditMode ? 'Update' : 'Save') }}
             </button>
         </div>
     </form>

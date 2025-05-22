@@ -32,6 +32,9 @@ export class PlantListComponent {
         this.plants = data
       },
       error: (err) => {
+        this.toastr.error(err+'Some error Occured', 'error',{
+          timeOut:1000
+        });
         console.error('Failed to load Plants Data', err);
       }
     })
@@ -53,7 +56,7 @@ export class PlantListComponent {
   deletePlant(plantId: number): void {
     this.plantService.deletePlantData(plantId).subscribe({
       next: () => {
-        this.toastr.success('Deleted successfully!', 'Success',{
+        this.toastr.success('Deleted successfully!', 'Delete',{
           timeOut:1000
         });
         this.getPlandData();

@@ -4,22 +4,27 @@
 </div>
 
 
-<div>
-    <table>
+<div [ngClass]="'table-container'">
+    <table [ngClass]="'styled-table'">
         <thead>
             <tr>
                 <td>Employee Name</td>
                 <td>Employee ID</td>
-
+                <td>Status</td>
+                <td>Action</td>
             </tr>
         </thead>
 
 
         <tbody>
             <tr *ngFor="let user of users">
-                <td>{{user.firstName}}  {{user.lastName}}</td>
+                <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.empCode}}</td>
-
+                <td>{{user.status ? 'Active' : 'Inactive'}}</td>
+                <td>
+                    <button class="edit-btn" (click)="editUser(user)">Edit</button>
+                    <button class="delete-btn" (click)="deleteUser(user.id)">Delete</button>
+                </td>
             </tr>
         </tbody>
 

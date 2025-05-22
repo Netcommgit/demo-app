@@ -10,7 +10,9 @@ app-footer{
   border-radius: 4px;
   cursor: pointer;
 }
-
+.add-button-Container{
+  color: white;
+}
 /* 
 .table-container {
   padding: 20px;

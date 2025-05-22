@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 
 
 
-import { UserRegistrationService } from '../shared/services/userRegistration.services';
+import { UserRegistrationService } from '../services/userRegistration.services';
 
 @Component({
   selector: 'app-user-registration',

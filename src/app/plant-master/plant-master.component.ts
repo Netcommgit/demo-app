@@ -33,7 +33,7 @@ export class PlantMasterComponent implements OnInit {
 
     this.plant = history.state.plant;
     this.isEditMode =  history.state.isEditMode;
-
+    
     if (!this.plant && this.isEditMode) {
       this.goToPlantList();
       return;

@@ -1,7 +1,19 @@
 app-footer{
-    color: white;
+    color:white
 }
 
+
+.add-button-Container {
+  padding: 6px 16px;
+  font-size: 14px;
+  background-color:  #004080;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-button-Container{
+  color: white;
+}
 
 .table-container {
   padding: 20px;
