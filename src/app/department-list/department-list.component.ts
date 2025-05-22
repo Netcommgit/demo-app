@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-department-list',
   imports: [CommonModule, HeaderComponent, RibbonComponent, FooterComponent],
   templateUrl: './department-list.component.html',
-  styleUrl: './department-list.component.css'
+  styleUrl: './department-list.component.scss'
 })
 export class DepartmentListComponent {
   departments: any[] =[];

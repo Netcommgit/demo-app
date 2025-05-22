@@ -17,7 +17,11 @@ export class UserService {
     return this.httpClient.post(this.apiUrl + 'register', request);
   }
 
-   getUserList(): Observable<any[]>{
-            return this.httpClient.get<any[]>(this.apiUrl+'GetAllUser')
-    }
+  getUserList(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.apiUrl + 'GetAllUser')
+  }
+
+  deleteUser(userId: number){
+    return this.httpClient.delete<any[]>(this.apiUrl+'')
+  }
 }

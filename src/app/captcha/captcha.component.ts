@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
   selector: 'app-captcha',
   imports: [MatIconModule],
   templateUrl: './captcha.component.html',
-  styleUrl: './captcha.component.css'
+  styleUrl: './captcha.component.scss'
 })
 export class CaptchaComponent implements AfterViewInit {
   @ViewChild('captchaCanvas') canvas!: ElementRef<HTMLCanvasElement>;  

@@ -1,5 +1,5 @@
-app-footer{
-    color: white;
+app-footer {
+  color: white;
 }
 
 
@@ -13,14 +13,15 @@ app-footer{
   width: 100%;
   border-collapse: collapse;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .styled-table thead {
   background-color: #f4f4f4;
 }
 
-.styled-table th, .styled-table td {
+.styled-table th,
+.styled-table td {
   text-align: left;
   padding: 12px 16px;
   border-bottom: 1px solid #e0e0e0;
@@ -87,4 +88,55 @@ select {
   padding: 6px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+}
+
+
+.table-controls-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%; // Ensures it stays within parent container (like .table-container)
+  box-sizing: border-box; // important for proper width calculation
+  gap: 1rem;
+}
+
+.left-controls select {
+   flex-shrink: 0; 
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  outline: none;
+  min-width: 100px;
+
+  &:focus {
+    border-color: #3b82f6;
+  }
+}
+
+// .right-controls {
+//   flex-grow: 1;      // take remaining space
+//   max-width: 300px;  // optional max width for search bar
+// }
+
+.right-controls .global-search-bar {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  outline: none;
+  box-sizing: border-box;  
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
 }

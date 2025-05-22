@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
   selector: 'app-root',
   imports: [RouterOutlet,RouterModule,CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'demo-app';

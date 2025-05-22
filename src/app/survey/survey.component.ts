@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-survey',
   imports: [HeaderComponent,RibbonComponent,FooterComponent,CommonModule],
   templateUrl: './survey.component.html',
-  styleUrl: './survey.component.css'
+  styleUrl: './survey.component.scss'
 })
 export class SurveyComponent {
    

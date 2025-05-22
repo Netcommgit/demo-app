@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-mypage',
   imports: [RibbonComponent,HeaderComponent,FooterComponent,CommonModule],
   templateUrl: './mypage.component.html',
-  styleUrl: './mypage.component.css'
+  styleUrl: './mypage.component.scss'
 })
 export class MypageComponent {
   isActive: boolean = true;

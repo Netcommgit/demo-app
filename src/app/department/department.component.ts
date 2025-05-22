@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   selector: 'app-department',
   imports: [HeaderComponent, RibbonComponent, FooterComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './department.component.html',
-  styleUrl: './department.component.css'
+  styleUrl: './department.component.scss'
 })
 export class DepartmentComponent {
   departmentForm!: FormGroup;

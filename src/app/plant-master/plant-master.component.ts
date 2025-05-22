@@ -14,7 +14,7 @@ import { Route, Router } from '@angular/router';
     , ReactiveFormsModule
   ],
   templateUrl: './plant-master.component.html',
-  styleUrl: './plant-master.component.css'
+  styleUrl: './plant-master.component.scss'
 })
 export class PlantMasterComponent implements OnInit {
   plantForm!: FormGroup;

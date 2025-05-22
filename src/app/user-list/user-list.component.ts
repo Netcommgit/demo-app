@@ -16,27 +16,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class UserListComponent {
   users: any[] = [];
 
-  //  pageSizeOptions = [5, 10, 25];
-  // pageSize: number = 5;
+  globalSearch: string = '';
+  filteredUsers: any[] = [];
+  paginatedUsers: any[] = [];  // Users to display per page
 
-  // currentPage: number = 1;
-  // totalPages: number = 1;
-
-  // pagedUsers: User[] = [];
+  currentPage: number = 1;
+  pageSize: number = 5;
+  totalPages: number = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 50];
 
   constructor(private userService: UserService) { }
 
 
   ngOnInit(): void {
     this.getUserList();
-    // this.filteredData = [...this.users];
-    // this.updatePagination();
   }
 
   getUserList() {
     this.userService.getUserList().subscribe({
       next: (data) => {
         this.users = data;
+        this.filteredUsers = [...this.users];
+        // this is for pagination start here
+        this.currentPage = 1;
+        this.updatePagination();
+        //this is for pagination end here
       },
       error: (err) => {
         console.error('Failed to load users', err);
@@ -47,51 +51,77 @@ export class UserListComponent {
   editUser(user: any) {
     console.log(user)
   }
-  deleteUser(userID: string) {
-    console.log(userID)
+  deleteUser(userId: number) {
+    // After delete from backend, refresh the list
+    this.userService.deleteUser(userId).subscribe(() => {
+      this.users = this.users.filter(user => user.id !== userId);
+      this.updatePagination();
+    });
   }
 
   // for pagination start here 
 
-  
 
-  // filterUsers() {
-  //   const term = this.searchTerm.toLowerCase();
-  //   this.filteredData = this.users.filter(user =>
-  //     Object.values(user).some(val =>
-  //       String(val).toLowerCase().includes(term)
-  //     )
-  //   );
-  //   this.currentPage = 1;
-  //   this.updatePagination();
-  // }
+  fetchUsers() {
+    this.users = [];
+
+    this.updatePagination();
+  }
 
   // updatePagination() {
-  //   this.totalPages = Math.ceil(this.filteredData.length / this.pageSize);
-  //   const start = (this.currentPage - 1) * this.pageSize;
-  //   const end = start + this.pageSize;
-  //   this.paginatedData = this.filteredData.slice(start, end);
-  // }
+  //   debugger
+  //   const startIndex = (this.currentPage - 1) * this.pageSize;
+  //   const endIndex = startIndex + this.pageSize;
 
-  // previousPage() {
-  //   if (this.currentPage > 1) {
-  //     this.currentPage--;
-  //     this.updatePagination();
-  //   }
+  //   this.paginatedUsers = this.users.slice(startIndex, endIndex);
+  //   this.totalPages = Math.ceil(this.users.length / this.pageSize);
   // }
+  updatePagination() {
+  const startIndex = (this.currentPage - 1) * this.pageSize;
+  const endIndex = startIndex + this.pageSize;
 
-  // nextPage() {
-  //   if (this.currentPage < this.totalPages) {
-  //     this.currentPage++;
-  //     this.updatePagination();
-  //   }
-  // }
+  this.paginatedUsers = this.filteredUsers.slice(startIndex, endIndex);
+  this.totalPages = Math.ceil(this.filteredUsers.length / this.pageSize);
+}
 
-  // onPageSizeChange() {
-  //   this.currentPage = 1;
-  //   this.updatePagination();
-  // }
+  onPageSizeChange() {
+    this.currentPage = 1;
+    this.updatePagination();
+  }
 
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+
+  applyGlobalFilter() {
+    const search = this.globalSearch.toLowerCase();
+
+    this.filteredUsers = this.users.filter(user => {
+      const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+      const empCode = user.empCode?.toLowerCase();
+      const status = user.status ? 'active' : 'inactive';
+
+      return (
+        fullName.includes(search) ||
+        empCode.includes(search) ||
+        status.includes(search)
+      );
+    });
+
+    this.currentPage = 1;
+    this.updatePagination();
+  }
 
   // for pagination end here 
 

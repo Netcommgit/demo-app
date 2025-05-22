@@ -13,7 +13,7 @@ import { AuthService } from '../shared/services/auth.service';
   selector: 'app-login',
   imports: [CaptchaComponent,RouterModule,RouterLinkActive,CommonModule,FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   user = {

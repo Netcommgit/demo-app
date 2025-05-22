@@ -16,7 +16,7 @@ import { SurveyService } from '../services/survey.service';
   imports: [HeaderComponent, CommonModule, FooterComponent, RibbonComponent, MatFormFieldModule, ReactiveFormsModule
     , FormsModule],
   templateUrl: './add-survey.component.html',
-  styleUrl: './add-survey.component.css'
+  styleUrl: './add-survey.component.scss'
 })
 export class AddSurveyComponent {
 

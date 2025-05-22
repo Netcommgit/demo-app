@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-ribbon',
   imports: [RouterModule,RouterLinkActive,CommonModule],
   templateUrl: './ribbon.component.html',
-  styleUrl: './ribbon.component.css'
+  styleUrl: './ribbon.component.scss'
 })
 export class RibbonComponent {
 

@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-plant-list',
   imports: [HeaderComponent, FooterComponent, RibbonComponent, CommonModule],
   templateUrl: './plant-list.component.html',
-  styleUrl: './plant-list.component.css'
+  styleUrl: './plant-list.component.scss'
 })
 export class PlantListComponent {
   plants: any[] = [];

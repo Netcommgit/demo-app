@@ -24,7 +24,7 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,MatInputModule,MatButtonModule,ReactiveFormsModule,MatSelectModule,MatGridListModule
   ,MatDatepickerModule,MatNativeDateModule],
   templateUrl: './user-registration.component.html',
-  styleUrl: './user-registration.component.css'
+  styleUrl: './user-registration.component.scss'
 })
 export class UserRegistrationComponent implements OnInit {
 
