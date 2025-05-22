@@ -10,7 +10,7 @@ import { Plant } from '../models/plant';
 import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-plant-master',
-  imports: [HeaderComponent, RibbonComponent, FooterComponent, CommonModule
+  imports: [ CommonModule
     , ReactiveFormsModule
   ],
   templateUrl: './plant-master.component.html',

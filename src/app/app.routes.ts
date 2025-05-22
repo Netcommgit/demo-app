@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MypageComponent } from './mypage/mypage.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
@@ -74,5 +73,4 @@ export const routes: Routes = [
         component:DepartmentListComponent,
         title:'Department List'
     }
-
 ];

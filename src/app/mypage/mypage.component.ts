@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-mypage',
-  imports: [RibbonComponent,HeaderComponent,FooterComponent,CommonModule],
+  imports: [CommonModule],
   templateUrl: './mypage.component.html',
   styleUrl: './mypage.component.scss'
 })
@@ -31,5 +31,8 @@ export class MypageComponent {
   }
   naigateToDepartment():void{
     this.router.navigate(['department']);
+  }
+  naigateToFixHeader():void{
+    this.router.navigate(['fix-header']);
   }
 }

@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plant-list',
-  imports: [HeaderComponent, FooterComponent, RibbonComponent, CommonModule],
+  imports: [ CommonModule],
   templateUrl: './plant-list.component.html',
   styleUrl: './plant-list.component.scss'
 })

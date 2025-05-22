@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department',
-  imports: [HeaderComponent, RibbonComponent, FooterComponent, CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './department.component.html',
   styleUrl: './department.component.scss'
 })

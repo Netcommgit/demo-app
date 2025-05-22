@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-user-list',
-  imports: [FooterComponent, HeaderComponent, RibbonComponent,
+  imports: [
     CommonModule, ReactiveFormsModule, FormsModule
   ],
   templateUrl: './user-list.component.html',

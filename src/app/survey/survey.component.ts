@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey',
-  imports: [HeaderComponent,RibbonComponent,FooterComponent,CommonModule],
+  imports: [CommonModule],
   templateUrl: './survey.component.html',
   styleUrl: './survey.component.scss'
 })

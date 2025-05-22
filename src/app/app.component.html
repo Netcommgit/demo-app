@@ -1,2 +1,37 @@
+<!-- <router-outlet></router-outlet> -->
 
-<router-outlet></router-outlet>
+<!-- <div class="page-container">
+    <header class="header">
+        <app-header></app-header>
+        <app-ribbon></app-ribbon>
+    </header>
+
+    <main class="content-area">
+
+        <router-outlet></router-outlet> 
+    </main>
+
+    <footer class="footer">
+        <app-footer></app-footer>
+    </footer>
+</div> -->
+
+<!-- Layout for login (blank path) -->
+<router-outlet *ngIf="isLoginPage"></router-outlet>
+
+<!-- Full layout with header, ribbon, footer for other pages -->
+<div class="page-container" *ngIf="!isLoginPage">
+  <header class="header">
+    <app-header></app-header>
+    <app-ribbon></app-ribbon>
+  </header>
+
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <app-footer></app-footer>
+  </footer>
+</div>
+

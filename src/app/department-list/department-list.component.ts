@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-department-list',
-  imports: [CommonModule, HeaderComponent, RibbonComponent, FooterComponent],
+  imports: [CommonModule],
   templateUrl: './department-list.component.html',
   styleUrl: './department-list.component.scss'
 })
