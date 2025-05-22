@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { ConfigService } from "./config.service";
 
 
 @Injectable({
@@ -9,9 +10,10 @@ import { Observable } from "rxjs";
 
 
 export class LoginService {
-    private apiUrl = 'https://localhost:7097/api/'; // Replace with actual API URL
-    //https://localhost:7097/api/login
-    constructor(private http: HttpClient) { }
+    private apiUrl:string;
+    constructor(private http: HttpClient, private configService :ConfigService) { 
+        this.apiUrl = this.configService.getApiUrl();
+    }
 
     login(userData: any): Observable<any> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

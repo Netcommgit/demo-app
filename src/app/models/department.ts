@@ -4,9 +4,5 @@ export interface Department {
     status: boolean;
     archive: boolean;
     sapCode: string;
-    groupID: number;
-    // createdBy: string;
-    // createdOn: string;          
-    // modifiedBy: string;
-    // modifiedOn: string;        
+    groupID: number;      
 }

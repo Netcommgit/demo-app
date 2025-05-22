@@ -12,14 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { UserService } from '../services/user.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; // for native JS Date
 import Swal from 'sweetalert2';
 
-
-
-import { UserRegistrationService } from '../services/userRegistration.services';
 
 @Component({
   selector: 'app-user-registration',
@@ -34,7 +31,7 @@ export class UserRegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private registrationService:UserRegistrationService
+              private userService:UserService
   ) {}
  
 
@@ -57,7 +54,7 @@ export class UserRegistrationComponent implements OnInit {
     if (this.registrationForm.valid) {
       const request = this.registrationForm.value;
   
-      this.registrationService.registerUser(request).subscribe({
+      this.userService.registerUser(request).subscribe({
         next: (response) => {
           if(response.id != null && response.id != ""){
             debugger

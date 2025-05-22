@@ -19,17 +19,17 @@ export class DepartmentComponent {
   departmentForm!: FormGroup;
   isSubmitting = false;
   showToast = false;
-  toastType :'success' | 'error' = 'success';
+  toastType: 'success' | 'error' = 'success';
   toastMessage = '';
-  constructor(private fb: FormBuilder, private departmentService: DepartmentService, private router:Router) {
+  constructor(private fb: FormBuilder, private departmentService: DepartmentService, private router: Router) {
     this.initiliazeDocumentform();
   }
 
   initiliazeDocumentform(): void {
     this.departmentForm = this.fb.group({
-       deptID: [null],
+      deptID: [0],
       deptName: ['', Validators.required],
-      modifyDate: [new Date().toISOString().substring(0, 10), Validators.required],
+      // modifyDate: [new Date().toISOString().substring(0, 10), Validators.required],
       status: [false, Validators.required],
       archive: [false, Validators.required],
       sapCode: [''],
@@ -47,55 +47,55 @@ export class DepartmentComponent {
       }
       return;
     }
-    this.isSubmitting =  true;
-    const departmentData =  this.departmentForm.value;
-    if(departmentData.deptID == null || departmentData.deptID == 0){
-    this.departmentService.addDepartment(departmentData).subscribe({
-      next: () => {
+    this.isSubmitting = true;
+    const departmentData = this.departmentForm.value;
+    if (departmentData.deptID == null || departmentData.deptID == 0) {
+      this.departmentService.addDepartment(departmentData).subscribe({
+        next: () => {
 
-        this.isSubmitting = false;
-        this.toastType = 'success';
-        this.toastMessage = 'Department saved successfully!';
-        this.showToast = true;
-        this.departmentForm.reset({
-          plantId: 0,
-          status: true,
-        });
+          this.isSubmitting = false;
+          this.toastType = 'success';
+          this.toastMessage = 'Department saved successfully!';
+          this.showToast = true;
+          this.departmentForm.reset({
+            plantId: 0,
+            status: true,
+          });
 
-        setTimeout(() => (this.showToast = false), 3000);
-      },
-      error: () => {
-        this.isSubmitting = false;
-        this.toastType = 'error';
-        this.toastMessage = 'Failed to save department.';
-        this.showToast = true;
-        setTimeout(() => (this.showToast = false), 3000);
-      }
-    });
+          setTimeout(() => (this.showToast = false), 3000);
+        },
+        error: () => {
+          this.isSubmitting = false;
+          this.toastType = 'error';
+          this.toastMessage = 'Failed to save department.';
+          this.showToast = true;
+          setTimeout(() => (this.showToast = false), 3000);
+        }
+      });
     }
-    else{
-      this.departmentService.updateDepartment(departmentData.deptID,departmentData).subscribe({
-      next: () => {
+    else {
+      this.departmentService.updateDepartment(departmentData.deptID, departmentData).subscribe({
+        next: () => {
 
-        this.isSubmitting = false;
-        this.toastType = 'success';
-        this.toastMessage = 'Department updated successfully!';
-        this.showToast = true;
-        this.departmentForm.reset({
-          plantId: 0,
-          status: true,
-        });
+          this.isSubmitting = false;
+          this.toastType = 'success';
+          this.toastMessage = 'Department updated successfully!';
+          this.showToast = true;
+          this.departmentForm.reset({
+            plantId: 0,
+            status: true,
+          });
 
-        setTimeout(() => (this.showToast = false), 3000);
-      },
-      error: () => {
-        this.isSubmitting = false;
-        this.toastType = 'error';
-        this.toastMessage = 'Failed to update .';
-        this.showToast = true;
-        setTimeout(() => (this.showToast = false), 3000);
-      }
-    });
+          setTimeout(() => (this.showToast = false), 3000);
+        },
+        error: () => {
+          this.isSubmitting = false;
+          this.toastType = 'error';
+          this.toastMessage = 'Failed to update .';
+          this.showToast = true;
+          setTimeout(() => (this.showToast = false), 3000);
+        }
+      });
     }
   }
 

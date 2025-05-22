@@ -5,6 +5,11 @@
 
 
 <div [ngClass]="'table-container'">
+    <!-- <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+        <option [value]="25">25</option>
+    </select> -->
     <table [ngClass]="'styled-table'">
         <thead>
             <tr>
@@ -15,20 +20,24 @@
             </tr>
         </thead>
 
-
         <tbody>
             <tr *ngFor="let user of users">
-                <td>{{user.firstName}} {{user.lastName}}</td>
-                <td>{{user.empCode}}</td>
-                <td>{{user.status ? 'Active' : 'Inactive'}}</td>
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                <td>{{ user.empCode }}</td>
+                <td>{{ user.status ? 'Active' : 'Inactive' }}</td>
                 <td>
-                    <button class="edit-btn" (click)="editUser(user)">Edit</button>
-                    <button class="delete-btn" (click)="deleteUser(user.id)">Delete</button>
+                    <button [ngClass]="'edit-btn'" (click)="editUser(user)">Edit</button>
+                    <button [ngClass]="'delete-btn'" (click)="deleteUser(user.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
-
     </table>
+
+    <!-- <div [ngClass]="'pagination-container'">
+        <button [ngClass]="'pagination-btn'" (click)="previousPage()" [disabled]="currentPage === 1">Prev</button>
+        <span [ngClass]="'pagination-label'">Page {{ currentPage }} / {{ totalPages }}</span>
+        <button [ngClass]="'pagination-btn'" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div> -->
 </div>
 
 
