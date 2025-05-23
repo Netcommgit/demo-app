@@ -1,0 +1,116 @@
+<div *ngIf="showToast" class="toast-box">
+    {{ toastMessage }}
+</div>
+<form [formGroup]="surveyForm" (ngSubmit)="saveSurvey()">
+    <div class="survey-form-container">
+        <div class="header">
+            <h2>Create/Edit Survey</h2>
+            <button class="btn back-button" (click)="goBack()">Back</button>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Survey Details</h3>
+            <div class="form-grid">
+                <input type="hidden" formControlName="surveyId" />
+                <label>
+                    Survey Name
+                    <input type="text" class="form-input" [ngClass]="{ 'error': isFieldInvalid('surveyName') }"
+                        formControlName="surveyName" />
+                </label>
+
+                <label>
+                    Start Date
+                    <input type="date" class="form-input" formControlName="startDate" />
+                </label>
+
+                <label>
+                    End Date
+                    <input type="date" class="form-input" formControlName="endDate" />
+                </label>
+
+                <label>
+                    User Instructions
+                    <input type="text" class="form-input" formControlName="userInstructions" />
+                </label>
+
+                <label>
+                    Confirmation Message
+                    <input type="text" class="form-input" formControlName="confirmationMessage" />
+                </label>
+
+                <!-- <label>
+        Display Questions
+        <div class="radio-group">
+          <label
+            [ngClass]="{ 'selected-radio': surveyForm.value.displayMode === 'single' }">
+            <input type="radio" formControlName="displayMode" value="single" /> Single Page
+          </label>
+
+          <label
+            [ngClass]="{ 'selected-radio': surveyForm.value.displayMode === 'multiple' }">
+            <input type="radio" formControlName="displayMode" value="multiple" /> Different Page
+          </label>
+        </div>
+      </label> -->
+
+                <div class="form-group">
+                    <label class="group-label">Display Questions</label>
+                    <div class="radio-group" role="radiogroup">
+                        <label class="radio-label"
+                            [ngClass]="{ 'selected-radio': surveyForm.value.displayMode === true }">
+                            <input type="radio" formControlName="displayMode" [value]="true" name="displayMode" />
+                            Single Page
+                        </label>
+
+                        <label class="radio-label"
+                            [ngClass]="{ 'selected-radio': surveyForm.value.displayMode === false }">
+                            <input type="radio" formControlName="displayMode" [value]="false" name="displayMode" />
+                            Different Page
+                        </label>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Authenticate Users for Survey</h3>
+
+                <div class="radio-group horizontal">
+                    <label [ngClass]="{ 'selected-radio': surveyForm.value.audience === 'all' }">
+                        <input type="radio" formControlName="audience" value="all" /> For All Employee
+                    </label>
+
+                    <label [ngClass]="{ 'selected-radio': surveyForm.value.audience === 'custom' }">
+                        <input type="radio" formControlName="audience" value="custom" /> For Custom Group
+                    </label>
+                </div>
+
+                <div class="form-grid">
+                    <label>
+                        Select Location:
+                        <select class="form-input" formControlName="location">
+                            <option value="">Select an Option</option>
+                            <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Department:
+                        <select class="form-input" formControlName="department">
+                            <option value="">Select an Option</option>
+                            <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+                        </select>
+                    </label>
+                </div>
+
+
+            </div>
+            <div class="save-button">
+                <button type="submit" class="btn save-btn">Save Survey Details</button>
+            </div>
+        </div>
+    </div>
+</form>

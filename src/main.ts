@@ -14,8 +14,11 @@ bootstrapApplication(AppComponent, {
 
   provideAnimations(),
   provideToastr({
+    // timeOut: 3000,
+    // positionClass: 'toast-bottom-right',
+    // preventDuplicates: true,
     timeOut: 3000,
-    positionClass: 'toast-left-right',
+    positionClass: 'toast-top-center', // Most reliable for visibility
     preventDuplicates: true,
   }),
 

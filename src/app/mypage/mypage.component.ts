@@ -33,6 +33,6 @@ export class MypageComponent {
     this.router.navigate(['department']);
   }
   naigateToFixHeader():void{
-    this.router.navigate(['fix-header']);
+    this.router.navigate(['new-survey']);
   }
 }

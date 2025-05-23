@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { RibbonComponent } from '../ribbon/ribbon.component';
-import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +10,7 @@ import { SurveyService } from '../services/survey.service';
 @Component({
   selector: 'app-add-survey',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, FooterComponent, RibbonComponent, MatFormFieldModule, ReactiveFormsModule
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule
     , FormsModule],
   templateUrl: './add-survey.component.html',
   styleUrl: './add-survey.component.scss'

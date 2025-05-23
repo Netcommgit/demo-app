@@ -1,30 +1,34 @@
+<div [ngClass]="'plant-main-container'">
 
-<button [ngClass]="'add-button-Container'" type="button" (click)="addNewPlant()">
-    Add New Plant
-</button>
+  <div class="header-container">
+    <button class="add-button-Container" type="button" (click)="addNewPlant()">
+      Add New Plant
+    </button>
+  </div>
 
 
-<div [ngClass]="'table-container'">
-  <table [ngClass]="'styled-table'">
-    <thead>
-      <tr>
-        <th>Plant Name</th>
-        <th>Plant SAP Code</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let plant of plants">
-        <td>{{ plant.plantName }}</td>
-        <td>{{ plant.sapCode }}</td>
-       <td>{{ plant.status ? 'Active' : 'Inactive' }}</td>
-        <td>
-          <button class="edit-btn" (click)="editPlant(plant)">Edit</button>
-          <button class="delete-btn" (click)="deletePlant(plant.plantId)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div [ngClass]="'table-container'">
+    <table [ngClass]="'styled-table'">
+      <thead>
+        <tr>
+          <th>Plant Name</th>
+          <th>Plant SAP Code</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plant of plants">
+          <td>{{ plant.plantName }}</td>
+          <td>{{ plant.sapCode }}</td>
+          <td>{{ plant.status ? 'Active' : 'Inactive' }}</td>
+          <td>
+            <button class="edit-btn" (click)="editPlant(plant)">Edit</button>
+            <button class="delete-btn" (click)="deletePlant(plant.plantId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
-

@@ -10,6 +10,7 @@ import { PlantMasterComponent } from './plant-master/plant-master.component';
 import { PlantListComponent } from './plant-list/plant-list.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
+import { NewSurveyComponent } from './new-survey/new-survey.component';
 //import { authGuard } from './shared/auth.guard';
 export const routes: Routes = [
 
@@ -72,5 +73,10 @@ export const routes: Routes = [
         path:'department-list',
         component:DepartmentListComponent,
         title:'Department List'
+    },
+    {
+        path:'new-survey',
+        component:NewSurveyComponent,
+        title:'New-Survey'
     }
 ];

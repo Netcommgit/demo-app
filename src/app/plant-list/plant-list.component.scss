@@ -1,64 +1,24 @@
-app-footer{
-    color: white;
+.plant-main-container {
+ padding: 0px;
+
+  
 }
+
+.header-container {
+    display: flex;
+    padding-right: 20px;
+    justify-content: flex-end; // align button to the right
+  }
 
 .add-button-Container {
   padding: 6px 16px;
   font-size: 14px;
   background-color:  #004080;
+  color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
 }
-.add-button-Container{
-  color: white;
-}
-/* 
-.table-container {
-  padding: 20px;
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.styled-table th, .styled-table td {
-text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.styled-table tbody tr {
-  height: auto;
-}
-
-
-.edit-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.delete-btn {
-  background-color: #dc3545;
-  color: white;
-} 
-
-.edit-btn,
-.delete-btn {
-  padding: 6px 12px;
-  margin-right: 8px;
-  border: none;
-  border-radius: 4px;
-  font-size: 13px;
-  cursor: pointer;
-} */
-
-
 
 
 .table-container {
@@ -107,3 +67,4 @@ text-align: left;
   background-color: #dc3545;
   color: white;
 }
+

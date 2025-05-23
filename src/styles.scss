@@ -2,3 +2,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .toast-container {
+  z-index: 10500 !important;
+  pointer-events: all;
+}
