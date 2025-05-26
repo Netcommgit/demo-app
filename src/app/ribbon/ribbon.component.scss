@@ -1,26 +1,68 @@
-.ribbon-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #055496;
-    height: 30px;
-    column-gap: 25px;
-}
+// .ribbon-div{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+//     background-color: #055496;
+//     height: 30px;
+//     column-gap: 25px;
+// }
 
 
-a{
+// a{
+//     color: white;
+//    cursor: pointer;
+// }
+
+// a {
+//     text-decoration: none !important; /* Removes underline */
+//   }
+  
+//   .router-link-active {
+//     text-decoration: none !important; 
+//     border-bottom: none !important;    
+//     outline: none !important;        
+//   }
+  
+
+.ribbon-div {
+  display: flex;
+  flex-wrap: wrap;                // Allows wrapping on smaller screens
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #055496;
+  height: auto;                   // Allow height to grow if items wrap
+  padding: 0.5rem 1rem;
+  gap: 1rem;                      // Better than column-gap for wrapping flex items
+  box-sizing: border-box;
+
+  a {
     color: white;
-   cursor: pointer;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 0.95rem;
+    white-space: nowrap;         // Prevent line breaks inside link text
+    padding: 0.3rem 0.5rem;
+
+    &.router-link-active {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      outline: none !important;
+    }
+  }
 }
 
-a {
-    text-decoration: none !important; /* Removes underline */
+// Responsive styles
+@media (max-width: 600px) {
+  .ribbon-div {
+    justify-content: flex-start;   // Align left for narrow screens
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+    a {
+      font-size: 0.85rem;
+      padding: 0.3rem;
+    }
   }
-  
-  .router-link-active {
-    text-decoration: none !important; 
-    border-bottom: none !important;    
-    outline: none !important;        
-  }
-  
+}

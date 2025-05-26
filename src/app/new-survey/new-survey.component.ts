@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, FormsModule, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClient } from '@angular/common/http';
 import { } from '../services/survey.service';
 import { Survey } from '../models/survey';
 import { NewSurveyService } from '../services/new-survey.service';
-import { ToastrService } from 'ngx-toastr';
+import { DdlServicesService } from '../services/ddl-services.service';
 @Component({
   selector: 'app-new-survey',
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule],
@@ -20,19 +18,25 @@ export class NewSurveyComponent {
   toastMessage: string = '';
   toastType: 'success' | 'error' = 'success';
   showToast: boolean = false;
-
+  locations: any;
+  departments: any;
 
   surveyForm!: FormGroup;
 
-  locations = ['New York', 'London', 'Tokyo'];
-  departments = ['HR', 'IT', 'Finance'];
+  // locations = ['New York', 'London', 'Tokyo'];
+  //departments = ['HR', 'IT', 'Finance'];
 
   constructor(
     private fb: FormBuilder,
     private surveyService: NewSurveyService,
-    private toastr: ToastrService
+    private ddlServicesService: DdlServicesService
   ) {
     this.initForm();
+  }
+
+  ngOnInit() {
+    this.ddlPlant();
+    this.ddlDepartment();
   }
 
   private initForm(): void {
@@ -95,7 +99,7 @@ export class NewSurveyComponent {
           this.showToast = true;
           setTimeout(() => (this.showToast = false), 1000);
         },
-        error: err => this.toastr.error('Failed to update survey.')
+        error: err => console.log("Some error occured")
 
       });
     } else {
@@ -106,8 +110,23 @@ export class NewSurveyComponent {
           this.showToast = true;
           setTimeout(() => (this.showToast = false), 1000);
         },
-        error: err => this.toastr.error('Failed to create survey.')
+        error: err => console.log("Some error occured")
       });
     }
+  }
+
+  ddlDepartment() {
+    this.ddlServicesService.getDepartmentsList().subscribe(data => {
+      this.departments = data
+      debugger;
+      this.surveyForm.get('department')?.setValue(data[0]); // Optional: set first as default
+    });
+  }
+
+  ddlPlant() {
+    this.ddlServicesService.getPlantList().subscribe(data => {
+      this.locations = data;
+      this.surveyForm.get('location')?.setValue(data[0])
+    });
   }
 }

@@ -1,3 +1,7 @@
+// styles.scss or variables.scss
+$light-purple-bg: #f0f0ff;
+
+
 .survey-form-container {
   padding: 1rem;
   font-family: 'Segoe UI', sans-serif;
@@ -26,7 +30,7 @@
   }
 
   .card {
-    background: #f0f0ff;
+    background: $light-purple-bg;
     border: 1px solid #ccc;
     margin-top: 1rem;
     padding: 1rem;
@@ -126,3 +130,353 @@
 .toast-box.error {
   background-color: #f44336;
 }
+
+
+// First Card css Start here 
+
+.dual-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.select-box {
+  width: 30%;
+  height: 40px;
+}
+
+.btn-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.circle-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+}
+
+.btn-update-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+  display: none;
+}
+
+.primary-btn {
+  background-color: #2e1172;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  margin: 0.5rem;
+}
+
+
+.arrow.right {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 10px solid white;
+}
+
+.arrow.left {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid white;
+}
+
+.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+
+// Firs card css ENd here
+
+
+// second card csss start here 
+
+
+.question-option-wrapper {
+  background-color: $light-purple-bg;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.question-option-header {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.header-section {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+  color: #0b5394;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ccc;
+}
+
+.header-section:last-child {
+  border-right: none;
+}
+
+.question-option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.question-section,
+.option-section,
+.option-list-section {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 100%;
+  height: 25px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.option-types {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.option-row input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.arrow-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.arrow-btn {
+  background-color: #00b0f0;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn.add-btn {
+  background-color: #19006b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn.delete-btn {
+  background-color: transparent;
+  color: #800000;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.save-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background-color: #2e1a81;
+  color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+
+
+.select-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.select-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select-box select {
+  width: 200px;
+  height: 120px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.arrow-controls {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  gap: 5px;
+}
+
+.arrow-controls button {
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.move-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.circle-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  font-size: 22px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+
+
+.circle-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+.circle-btn.rotated {
+  transform: rotate(180deg);
+}
+
+
+#ddlAllUser option:checked {
+  background-color: #007BFF;
+
+  color: white;
+
+}
+
+#selectedUserSelect option:checked {
+  background-color: #007BFF;
+
+  color: white;
+
+}
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.option-input {
+  width: 180px;
+  height: 38px;
+  font-size: 14px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+
+.add-btn {
+  height: 38px;
+  background-color: #24006b;
+  color: white;
+  padding: 0 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.option-select {
+  width: 420px;
+  height: 40px;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.option-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.arrow-btn,
+.delete-btn {
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-btn {
+  background-color: transparent;
+  color: darkred;
+  font-size: 22px;
+} 
+
+
+.m-0{
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  text-align: center;
+}
+
+// second card csss end here 
