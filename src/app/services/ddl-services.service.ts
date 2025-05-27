@@ -18,6 +18,10 @@ export class DdlServicesService {
   }
 
    getPlantList(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.apiUrl + 'PlantMaster/GetPlantList')
+    return this.httpClient.get<any[]>(this.apiUrl + 'PlantMaster/GetPlantList');
+  }
+
+  getUserList():Observable<any[]>{
+    return this.httpClient.get<any[]>(this.apiUrl+'GetAllUser');
   }
 }

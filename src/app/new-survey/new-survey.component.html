@@ -1,7 +1,7 @@
 <div *ngIf="showToast" class="toast-box">
     {{ toastMessage }}
 </div>
-<form [formGroup]="surveyForm" (ngSubmit)="saveSurvey()">
+<form [formGroup]="surveyForm" (ngSubmit)="null">
     <div class="survey-form-container">
         <div class="header">
             <h2>Create/Edit Survey</h2>
@@ -75,7 +75,7 @@
                         Select Location:
                         <select class="form-input" formControlName="location">
                             <option value="">Select an Option</option>
-                            <option *ngFor="let loc of locations" [value]="loc.plantId">{{ loc.plantName }}</option>
+                            <option *ngFor="let loc of locations" [ngValue]="loc.plantId">{{ loc.plantName }}</option>
                         </select>
                     </label>
 
@@ -83,30 +83,34 @@
                         Department:
                         <select class="form-input" formControlName="department">
                             <option value="">Select an Option</option>
-                            <option *ngFor="let dept of departments" [value]="dept.deptID">{{ dept.deptName }}</option>
+                            <option *ngFor="let dept of departments" [ngValue]="dept.deptID">{{ dept.deptName }}</option>
                         </select>
                     </label>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" formGroupName="userDropDown">
                 <div class="dual-list-wrapper">
-                    <select multiple class="form-control select-box">
-                        <option *ngFor="let user of null">{{ user.name }}</option>
+                    <select multiple class="form-control select-box" formControlName="userList">
+                        <option *ngFor="let user of availableUsers" [ngValue]="user.id" >{{
+                            user.firstName+' ' + user.lastName}}
+
+                        </option>
                     </select>
 
                     <div class="btn-column">
-                        <button class="circle-btn"><i class="arrow right"></i></button>
-                        <!-- <button class="circle-btn"><i class="arrow left"></i></button> -->
+                        <button class="circle-btn" (click)="moveToSelected()"><i class="arrow right"></i></button>
                     </div>
 
                     <div class="btn-column">
-                        <!-- <button class="circle-btn"><i class="arrow right"></i></button> -->
-                        <button class="circle-btn"><i class="arrow left"></i></button>
+                        <button class="circle-btn" (click)="moveToAvailable()"><i class="arrow left"></i></button>
                     </div>
 
-                    <select multiple class="form-control select-box">
-                        <option *ngFor="let user of null">{{ user.name }}</option>
+                    <select multiple class="form-control select-box" formControlName="selectedUserList" size="10">
+                        <!-- <option *ngFor="let user of selectedUsers"  >{{ user.firstName }}</option> -->
+                        <option *ngFor="let user of selectedUsers" [ngValue]="user.id">
+                            {{ user.firstName + ' ' + user.lastName }}
+                        </option>
                     </select>
                 </div>
 
@@ -116,8 +120,8 @@
             </div>
 
             <!-- other design start here -->
-            <div class="card">
-
+            <div class="card" formGroupName="questionDetails">
+                
                 <div class="question-option-wrapper">
                     <div class="question-option-header">
                         <div class="header-section">Question Details</div>
@@ -132,15 +136,14 @@
                         <div class="option-section">
                             <label for="optionType">Option Type</label>
                             <div class="option-types">
-                                <label><input formControlName="optionType" type="radio" name="optType" value="1"
-                                        checked /> Radio
+                                <label><input formControlName="optionType" type="radio" value="1" checked /> Radio
                                     Button</label>
-                                <label><input formControlName="optionType" type="radio" name="optType" value="2" />
+                                <label><input formControlName="optionType" type="radio" value="2" />
                                     Multiple Text
                                     Box</label>
-                                <label><input formControlName="optionType" type="radio" name="optType" value="3" />
+                                <label><input formControlName="optionType" type="radio" value="3" />
                                     Check Box</label>
-                                <label><input formControlName="optionType" type="radio" name="optType" value="4" />
+                                <label><input formControlName="optionType" type="radio" value="4" />
                                     Single Text
                                     Box</label>
                             </div>
@@ -172,7 +175,8 @@
 
 
             <div class="save-button">
-                <button type="submit" class="btn save-btn">Save Survey Details</button>
+                <!-- <button type="submit" class="btn save-btn">Save Survey Details</button> -->
+                 <button type="submit" [ngClass]="'btn save-btn'" (click)="saveSurvey()" >Save Survey Details</button>
             </div>
         </div>
     </div>

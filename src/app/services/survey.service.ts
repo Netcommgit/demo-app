@@ -12,6 +12,7 @@ export class SurveyService {
   constructor(private http :HttpClient) { }
 
   saveSurvey(surveyData: any): Observable<any>{
+    debugger
     return this.http.post(this.apiUrl+'Save',surveyData)
   }
 }
