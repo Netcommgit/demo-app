@@ -10,6 +10,7 @@ export interface Survey {
     surveyView: boolean;
     authView: number;
     plantId: number;
+    departmentId:number
     isExcel: boolean;
     surveyStatus: boolean;
     archieve: boolean;

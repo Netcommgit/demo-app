@@ -480,3 +480,27 @@ textarea {
 }
 
 // second card csss end here 
+
+.hidden {
+  visibility: hidden !important;
+}
+
+
+
+
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+}
+
+
+.option-row > div {
+  flex: 1 1 300px; 
+  display: flex;
+  gap: 8px;
+}
+
+
+

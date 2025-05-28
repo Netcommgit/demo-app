@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FormGroup, FormBuilder, FormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Survey } from '../models/survey';
@@ -9,6 +9,7 @@ import { DdlServicesService } from '../services/ddl-services.service';
 import { DdlUser } from '../models/ddl-user';
 import { QuestionDetails } from '../models/survey';
 import { UserDropdown } from '../models/survey';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-survey',
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, FormsModule],
@@ -31,41 +32,42 @@ export class NewSurveyComponent implements OnInit {
 
   surveyForm!: FormGroup;
 
-  // locations = ['New York', 'London', 'Tokyo'];
-  //departments = ['HR', 'IT', 'Finance'];
-
   constructor(
     private fb: FormBuilder,
     private surveyService: NewSurveyService,
     private ddlServicesService: DdlServicesService
   ) {
-    this.initForm();
+    //this.initForm();
   }
 
-  ngOnInit() {
-    this.ddlPlant();
-    this.ddlDepartment();
-    this.ddlUser();
+  async ngOnInit() {
+    this.initForm();
+    this.loadDropdowns();
+    //this.initForm();
+  }
+
+
+  private async loadDropdowns() {
+    try {
+
+
+      this.ddlServicesService.getDepartmentsList().subscribe(data =>
+        this.departments = data
+
+      );
+      console.log(this.locations);
+      this.ddlServicesService.getPlantList().subscribe(data => this.locations = data);
+      this.ddlServicesService.getUserList().subscribe(data => this.availableUsers = data);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   private initForm(): void {
-    // this.surveyForm = this.fb.group({
-    //   surveyId: [0],
-    //   surveyName: ['', Validators.required],
-    //   startDate: [''],
-    //   endDate: [''],
-    //   userInstructions: [''],
-    //   confirmationMessage: [''],
-    //   displayMode: [true], 
-    //   audience: ['all'],
-    //   location: [''],
-    //   department: [''],
-    //   userDropDown: this.buildUserDropDown(),
-    //   //questionDetails: this.fb.array([this.buildQuestionDetails()]),
-    //     ...(includeQuestions ? { questionDetails: this.fb.array([]) } : {})
-    // });
-
-    const formConfig: { [key: string]: any } = {
+    const formConfig: {
+      [key: string]: any
+    } = {
       surveyId: [0],
       surveyName: ['', Validators.required],
       startDate: [''],
@@ -79,7 +81,6 @@ export class NewSurveyComponent implements OnInit {
       userDropDown: this.buildUserDropDown()
     };
 
-    // Add questionDetails only if required
     if (this.includeQuestions) {
       formConfig['questionDetails'] = this.fb.array([]); // or use: [this.buildQuestionDetails()]
     }
@@ -98,15 +99,12 @@ export class NewSurveyComponent implements OnInit {
 
   private buildQuestionDetails(): FormGroup {
     return this.fb.group({
-      questionText: ['', Validators.required],
+      questionText: [''],
       optionType: ['1'],
       newOption: ['']
 
     });
   }
-
-
-
 
   saveSurvey(): void {
     debugger
@@ -130,7 +128,7 @@ export class NewSurveyComponent implements OnInit {
     }
 
     const formValue = this.surveyForm.value;
-
+    const userFormValue =  formValue.userDropDown;
     const survey: Survey = {
       surveyId: formValue.surveyId,
       surveyName: formValue.surveyName,
@@ -138,9 +136,10 @@ export class NewSurveyComponent implements OnInit {
       surveyEnd: formValue.endDate ? new Date(formValue.endDate) : null,
       surveyInstruction: formValue.userInstructions,
       surveyConfirmation: formValue.confirmationMessage,
-      surveyView: this.surveyForm.value.displayMode, 
-      authView: formValue.audience === 'all' ? 0 : 1,
-      plantId: 1,
+      surveyView: this.surveyForm.value.displayMode,
+      authView: formValue.audience,
+      plantId: formValue.location,
+      departmentId:formValue.department,
       isExcel: false,
       surveyStatus: true,
       archieve: false,
@@ -148,6 +147,10 @@ export class NewSurveyComponent implements OnInit {
       userDropDown: formValue.userDropDown
     };
 
+    const userddl:UserDropdown ={
+      userList : userFormValue.location,
+      selectedUserList :userFormValue.selectedUserList
+    };
 
     if (survey.surveyId && survey.surveyId > 0) {
       this.surveyService.saveSurvey(survey).subscribe({
@@ -163,10 +166,15 @@ export class NewSurveyComponent implements OnInit {
     } else {
       this.surveyService.saveSurvey(survey).subscribe({
         next: () => {
-          this.toastType = 'success';
-          this.toastMessage = 'Plant saved successfully!';
-          this.showToast = true;
-          setTimeout(() => (this.showToast = false), 1000);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Survey saved successfully!',
+            timer: 1500,
+            showConfirmButton: false,
+            toast: true,
+            position: 'center'
+          });
         },
         error: err => console.log("Some error occured")
       });
@@ -188,29 +196,6 @@ export class NewSurveyComponent implements OnInit {
 
   }
 
-
-
-  ddlDepartment() {
-    this.ddlServicesService.getDepartmentsList().subscribe(data => {
-      this.departments = data
-      this.surveyForm.get('department')?.setValue(data[0]); // Optional: set first as default
-    });
-  }
-
-  ddlPlant() {
-    this.ddlServicesService.getPlantList().subscribe(data => {
-      this.locations = data;
-      this.surveyForm.get('location')?.setValue(data[0])
-    });
-  }
-
-  ddlUser() {
-    this.ddlServicesService.getUserList().subscribe(data => {
-      this.availableUsers = data;
-      this.selectedUsers = [];
-      this.surveyForm.get('questionDetails.userList')?.setValue([]);
-    });
-  }
 
   moveToSelected() {
     const selectedUserIds: string[] = this.surveyForm.get('userDropDown.userList')?.value || [];
@@ -253,6 +238,79 @@ export class NewSurveyComponent implements OnInit {
     // Update selectedUserList in the form (in case you’re using it elsewhere)
     this.surveyForm.get('userDropDown.selectedUserList')?.setValue(this.selectedUsers.map(u => u.id));
   }
+
+
+
+  selectedOptionType: number | null = null;
+  onOptionTypeChange(value: number) {
+    this.selectedOptionType = value;
+    if (value === 4) {
+      this.answerTypeOptions = ['textarea'];
+      this.selectedOptionIndex = null;
+    }
+    else{
+      this.answerTypeOptions = [];
+      this.selectedOptionIndex = null;
+    }
+  }
+
+  options: string[] = [];
+  newOptionControl = new FormControl('');
+
+
+
+
+  answerTypeOptions: string[] = [];
+  selectedOptionIndex: number | null = null;
+
+  addOption() {
+    const value = this.newOptionControl.value?.trim();
+    if (value && !this.options.includes(value)) {
+      this.answerTypeOptions.push(value);
+      this.newOptionControl.setValue('');
+    }
+  }
+
+
+  form = new FormGroup({
+    newOption: new FormControl(''),
+  });
+
+
+
+  onSelectOption(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    this.selectedOptionIndex = select.selectedIndex;
+  }
+
+  deleteOption() {
+    if (this.selectedOptionIndex !== null) {
+      this.answerTypeOptions.splice(this.selectedOptionIndex, 1);
+      this.selectedOptionIndex = null;
+    }
+  }
+
+  moveOptionUp() {
+    if (this.selectedOptionIndex !== null && this.selectedOptionIndex > 0) {
+      const idx = this.selectedOptionIndex;
+      [this.answerTypeOptions[idx - 1], this.answerTypeOptions[idx]] =
+        [this.answerTypeOptions[idx], this.answerTypeOptions[idx - 1]];
+      this.selectedOptionIndex--;
+    }
+  }
+
+  moveOptionDown() {
+    if (
+      this.selectedOptionIndex !== null &&
+      this.selectedOptionIndex < this.answerTypeOptions.length - 1
+    ) {
+      const idx = this.selectedOptionIndex;
+      [this.answerTypeOptions[idx], this.answerTypeOptions[idx + 1]] =
+        [this.answerTypeOptions[idx + 1], this.answerTypeOptions[idx]];
+      this.selectedOptionIndex++;
+    }
+  }
+
 
 
 }
