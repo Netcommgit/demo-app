@@ -18,7 +18,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let plant of plants">
+        <!-- <tr *ngFor="let plant of plants"> -->
+        @for (plant of plants; track plant.plantId ){
+        <tr>
+
           <td>{{ plant.plantName }}</td>
           <td>{{ plant.sapCode }}</td>
           <td>{{ plant.status ? 'Active' : 'Inactive' }}</td>
@@ -27,6 +30,7 @@
             <button class="delete-btn" (click)="deletePlant(plant.plantId)">Delete</button>
           </td>
         </tr>
+        }
       </tbody>
     </table>
   </div>
