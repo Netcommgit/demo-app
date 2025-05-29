@@ -14,8 +14,8 @@ export interface Survey {
     isExcel: boolean;
     surveyStatus: boolean;
     archieve: boolean;
-    questionDetails?: QuestionDetails;
-    userDropDown?: UserDropdown;
+    // questionDetails?: QuestionDetails;
+    // userDropDown?: UserDropdown;
     // createdBy: string;
     // createdOn: Date;
     // modifiedBy: string;

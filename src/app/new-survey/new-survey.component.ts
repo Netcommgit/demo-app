@@ -75,7 +75,7 @@ export class NewSurveyComponent implements OnInit {
       userInstructions: [''],
       confirmationMessage: [''],
       displayMode: [true],
-      audience: ['all'],
+      audience: ['1'],
       location: [''],
       department: [''],
       userDropDown: this.buildUserDropDown()
@@ -128,7 +128,7 @@ export class NewSurveyComponent implements OnInit {
     }
 
     const formValue = this.surveyForm.value;
-    const userFormValue =  formValue.userDropDown;
+    const userFormValue = formValue.userDropDown;
     const survey: Survey = {
       surveyId: formValue.surveyId,
       surveyName: formValue.surveyName,
@@ -137,19 +137,21 @@ export class NewSurveyComponent implements OnInit {
       surveyInstruction: formValue.userInstructions,
       surveyConfirmation: formValue.confirmationMessage,
       surveyView: this.surveyForm.value.displayMode,
-      authView: formValue.audience,
-      plantId: formValue.location,
-      departmentId:formValue.department,
+      authView:formValue.audience,
+      plantId: formValue.location  === ''? null:formValue.location,
+      departmentId:formValue.department === '' ?  null : formValue.department,
+      //plantId: formValue.location,
+      // departmentId: formValue.department,
       isExcel: false,
       surveyStatus: true,
       archieve: false,
-      questionDetails: formValue.questionDetails,
-      userDropDown: formValue.userDropDown
+      // questionDetails: formValue.questionDetails,
+      // userDropDown: formValue.userDropDown
     };
 
-    const userddl:UserDropdown ={
-      userList : userFormValue.location,
-      selectedUserList :userFormValue.selectedUserList
+    const userddl: UserDropdown = {
+      userList: userFormValue.location,
+      selectedUserList: userFormValue.selectedUserList
     };
 
     if (survey.surveyId && survey.surveyId > 0) {
@@ -248,7 +250,7 @@ export class NewSurveyComponent implements OnInit {
       this.answerTypeOptions = ['textarea'];
       this.selectedOptionIndex = null;
     }
-    else{
+    else {
       this.answerTypeOptions = [];
       this.selectedOptionIndex = null;
     }
